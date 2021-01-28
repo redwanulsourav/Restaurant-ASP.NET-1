@@ -44,5 +44,33 @@ namespace Restaurant.Controllers
             var mang = obj.Signups.Where(x => x.username == username).FirstOrDefault();
             return View(mang);
         }
+
+        [HttpGet]
+        public ActionResult AddItems()
+        {
+            Item[] items = obj.Items.ToArray();
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult AddItems(Item item)
+        {
+            Item item1 = new Item();
+            item1.ItemName = item.ItemName;
+            item1.ItemPrice = item.ItemPrice;
+
+            obj.Items.Add(item1);
+            obj.SaveChanges();
+            return RedirectToAction("ItemList");
+
+
+        }
+
+        [HttpGet]
+        public ActionResult ItemList()
+        {
+            return View(obj.Items.ToList());
+        }
     }
 }
