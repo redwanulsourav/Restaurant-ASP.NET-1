@@ -25,6 +25,7 @@ namespace Restaurant.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<PaymentType> PaymentTypes { get; set; }
         public virtual DbSet<Signup> Signups { get; set; }
