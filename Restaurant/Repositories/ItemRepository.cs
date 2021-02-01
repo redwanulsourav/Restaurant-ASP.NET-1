@@ -23,7 +23,7 @@ namespace Restaurant.Repositories
                                   {
                                       Text = obj.ItemName,
                                       Value = obj.ItemId.ToString(),
-                                      Selected = true
+                                      Selected = false
                                   }
                                   ).ToList();
             return objselectListItems;

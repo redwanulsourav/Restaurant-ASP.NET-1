@@ -3,17 +3,32 @@
     ViewBag.Title = "Order";
 }
 <h2>Order</h2>
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 <style>
-  
 </style>
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#Items").val(0); //remove selected from dropdown
         $("#Items").change(function () {
             var itemId = $("#Items").val();
             GetItemPrice(itemId);
         });
+        $("input[type=text]").change(function () {
+            SubTotal();
+        });
     });
+
+    function SubTotal() {
+        var unitprice = $("#txtUnitPrice").val();
+        var Quantity = $("#txtOuantity").val();
+        var discount = $("#txtDiscount").val();
+
+        var total = (unitprice * Quantity) - discount;
+        $("#txtTotal").val(parseFloat(total).toFixed(2));
+    }
+
     function GetItemPrice(itemId) {
         $.ajax({
             async: true,
