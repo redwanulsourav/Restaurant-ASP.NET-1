@@ -1,0 +1,79 @@
+﻿@model Tuple<IEnumerable<SelectListItem>, IEnumerable<SelectListItem>, IEnumerable<SelectListItem>>
+@{
+    ViewBag.Title = "Order";
+}
+<h2>Order</h2>
+<fieldset>
+    <legend>
+        Restaurant
+    </legend>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    Customer:
+                    @Html.DropDownList("Customer", new SelectList(Model.Item1, dataValueField: "Value", dataTextField: "Text"),
+                     htmlAttributes: new { @class = "form-control" })
+
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    Payment:
+                    @Html.DropDownList("PaymentType", new SelectList(Model.Item3, dataValueField: "Value", dataTextField: "Text"),
+                     htmlAttributes: new { @class = "form-control" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>
+        Restaurant Item:
+    </legend>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                Item:
+                @Html.DropDownList("Food Items", new SelectList(Model.Item2, dataValueField: "Value", dataTextField: "Text"),
+                 htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                Item Price:
+                <input type="text" readonly="readonly" id="txtUnitPrice" value="0.00" name="UnitPrice" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Quantity:
+                <input type="text" id="txtOuantity" value="0.00" name="Quantity" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">  
+        <div class="col-md-4">
+            <div class="form-group">
+                Discount:
+                <input type="text" id="txtDiscount" value="0.00" name="Discount" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                Total:
+                <input type="text" readonly="readonly" id="txtTotal" value="0.00" name="Total" class="form-control">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" style="margin-top:20px" value="Add To List" name="AddToList" id="btnAddToList" class="btn btn-success">
+            </div>
+        </div>
+    </div>
+</fieldset>
+

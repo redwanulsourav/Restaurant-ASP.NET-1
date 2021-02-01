@@ -1,4 +1,5 @@
 ﻿using Restaurant.Models;
+using Restaurant.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +72,17 @@ namespace Restaurant.Controllers
         public ActionResult ItemList()
         {
             return View(obj.Items.ToList());
+        }
+
+        public ActionResult Order()
+        {
+            CustomerRepository customerRepository = new CustomerRepository();
+            ItemRepository itemRepository = new ItemRepository();
+            PaymentTypeRepository paymentTypeRepository = new PaymentTypeRepository();
+
+            var objMultipleModels = new Tuple<IEnumerable<SelectListItem>, IEnumerable<SelectListItem>, IEnumerable<SelectListItem>>
+                (customerRepository.GetAllCustomers(),itemRepository.GetAllItems(),paymentTypeRepository.GetAllPaymentType());
+            return View(objMultipleModels);
         }
     }
 }

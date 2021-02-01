@@ -15,7 +15,7 @@ namespace Restaurant.Repositories
         {
             objRestaurantEntities = new RestaurantEntities();
         }
-        public IEnumerable<SelectListItem> GetAllItems()
+        public IEnumerable<SelectListItem> GetAllCustomers()
         {
             IEnumerable<SelectListItem> objselectListItems = new List<SelectListItem>();
             objselectListItems = (from obj in objRestaurantEntities.Customers
