@@ -84,5 +84,11 @@ namespace Restaurant.Controllers
                 (customerRepository.GetAllCustomers(),itemRepository.GetAllItems(),paymentTypeRepository.GetAllPaymentType());
             return View(objMultipleModels);
         }
+
+        public JsonResult GetItemPrice(int itemid)
+        {
+            decimal unitprice = obj.Items.Single(model => model.ItemId == itemid).ItemPrice;
+            return Json(unitprice, JsonRequestBehavior.AllowGet); 
+        }
     }
 }
