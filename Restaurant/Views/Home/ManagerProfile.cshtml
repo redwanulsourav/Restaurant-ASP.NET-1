@@ -3,8 +3,6 @@
 @{
     ViewBag.Title = "ManagerProfile";
 }
-
-<h2>ManagerProfile</h2>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -27,44 +25,68 @@
     </div>
 </div>
 <div>
-    <h4>Signup</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.username)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.username)
-        </dd>
+    <h2>ManagerProfile</h2>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Add Items", "AddItems", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
+                @Html.ActionLink("Take Order", "Order", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Item List", "ItemList", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h4>Signup</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.username)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.password)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.username)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.password)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.name)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.usertype)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.name)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.usertype)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.password)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.password)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.usertype)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.usertype)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
