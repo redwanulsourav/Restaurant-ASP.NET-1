@@ -38,12 +38,36 @@ namespace Restaurant.Controllers
             
         }
 
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Login");
+        }
+
         [HttpGet]
         public ActionResult ManagerProfile()
         {
             var username = Session["username"];
             var mang = obj.Signups.Where(x => x.username == username).FirstOrDefault();
             return View(mang);
+        }
+
+        [HttpGet]
+
+        public ActionResult AddCustomer()
+        {
+            Customer[] customers = obj.Customers.ToArray();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCustomer(Customer customer)
+        {
+            Customer customer1 = new Customer();
+            customer1.CustomerName = customer.CustomerName;
+            obj.Customers.Add(customer1);
+            obj.SaveChanges();
+            return RedirectToAction("Order");
         }
 
         [HttpGet]

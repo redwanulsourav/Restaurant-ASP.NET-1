@@ -8,6 +8,13 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
 </head>
+<style>
+    body {
+        font-family: Segoe UI, sans-serif;
+        font-size: 20px;
+        color: black;
+    }
+</style>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -22,6 +29,10 @@
 
                 @Html.ActionLink("Take Order", "Order", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Item List", "ItemList", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Logout", "Logout", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Add Customer", "AddCustomer", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+
 
             </div>
             <div class="navbar-collapse collapse">

@@ -193,6 +193,7 @@
     <Content Include="Views\Home\AddItems.cshtml" />
     <Content Include="Views\Home\ItemList.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Home\AddCustomer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

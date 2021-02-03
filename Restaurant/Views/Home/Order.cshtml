@@ -19,7 +19,29 @@
             $("input[type=text]").change(function () {
                 SubTotal();
             });
+            $("#btnAddToList").click(function () {
+                AddToList(); //buttonclickTOlist
+            });
         });
+
+        
+        function AddToList() {
+
+            var TableItemList = $("#ItemListTable");
+            var unitprice = $("#txtUnitPrice").val();
+            var Quantity = $("#txtOuantity").val();
+            var discount = $("#txtDiscount").val();
+            var ItemId = $("#Items").val();
+            var ItemName = $("#Items Option:Selected").text();
+
+            var total = (unitprice * Quantity) - discount;
+
+            var ItemList = "<tr><td hidden>" + ItemId + "</td><td>" + ItemName + "</td><td>" + unitprice + "</td><td>" + Quantity + "</td><td>" + discount + "</td><td>" + total
+
+                + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)' /> </tr></tr>";
+            TableItemList.append(ItemList);
+        }
+
 
         function SubTotal() {
             var unitprice = $("#txtUnitPrice").val();
@@ -130,7 +152,7 @@
         <legend>
             Order Item List:
         </legend>
-        <table style="width:100%">
+        <table style="width:100%" id="ItemListTable">
             <thead>
                 <tr>
                     <th hidden>
