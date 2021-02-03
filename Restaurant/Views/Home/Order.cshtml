@@ -40,8 +40,19 @@
 
                 + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)' /> </tr></tr>";
             TableItemList.append(ItemList);
+            Reset();
         }
 
+        //Field will be rested
+        function Reset() {
+            $("#Items").val(0);
+            $("#txtUnitPrice").val('');
+            $("#txtOuantity").val('');
+          
+            $('#txtTotal').val('');
+            $('#txtDiscount').val('');
+
+        }
 
         function SubTotal() {
             var unitprice = $("#txtUnitPrice").val();
