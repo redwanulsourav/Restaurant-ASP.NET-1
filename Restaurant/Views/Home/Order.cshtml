@@ -1,5 +1,10 @@
 ﻿@model Tuple<IEnumerable<SelectListItem>, IEnumerable<SelectListItem>, IEnumerable<SelectListItem>>
 @{
+    if (Session["username"] == null)
+    {
+        Response.Redirect("../Home/Login");
+    }
+   
     ViewBag.Title = "Order";
 }
 <h2>Order</h2>
@@ -38,7 +43,7 @@
 
             var ItemList = "<tr><td hidden>" + ItemId + "</td><td>" + ItemName + "</td><td>" + unitprice + "</td><td>" + Quantity + "</td><td>" + discount + "</td><td>" + total
 
-                + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItem(this)' /> </tr></tr>";
+                + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='Remove(this)' /> </tr></tr>";
             TableItemList.append(ItemList);
             Reset();
         }
@@ -61,6 +66,12 @@
 
             var total = (unitprice * Quantity) - discount;
             $("#txtTotal").val(parseFloat(total).toFixed(2));
+        }
+
+        //Remove From Cart
+        function Remove(itemId) {
+            $(itemId).closest('tr').remove();
+
         }
 
         function GetItemPrice(itemId) {
