@@ -45,17 +45,27 @@
 
                 + "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='Remove(this)' /> </tr></tr>";
             TableItemList.append(ItemList);
+            FinalAmount();
             Reset();
         }
+        function FinalAmount() {
+            $("#txtFinalAmount").val("0.00");
+            var FinalAmount = 0.00;
+            $("#ItemListTable").find("tr:gt(0)").each(function () {
+                var Total = parseFloat($(this).find("td:eq(5)").text());
+                FinalAmount += Total;
+                //alert(FinalAmount);
+            });
+            $("#txtFinalAmount").val(parseFloat(FinalAmount).toFixed(2));
 
+        }
         //Field will be rested
         function Reset() {
             $("#Items").val(0);
             $("#txtUnitPrice").val('');
             $("#txtOuantity").val('');
-          
             $('#txtTotal').val('');
-            $('#txtDiscount').val('');
+            $('#txtDiscount').val('0.00');
 
         }
 
@@ -70,7 +80,16 @@
 
         //Remove From Cart
         function Remove(itemId) {
+            $("#txtFinalAmount").val("0.00");
+            var FinalAmount = 0.00;
             $(itemId).closest('tr').remove();
+            $("#ItemListTable").find("tr:gt(0)").each(function () {
+                var Total = parseFloat($(this).find("td:eq(5)").text());
+                FinalAmount = Total - FinalAmount;
+                //alert(FinalAmount);
+            });
+
+            $("#txtFinalAmount").val(parseFloat(FinalAmount).toFixed(2));
 
         }
 
@@ -145,7 +164,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     Quantity:
-                    <input type="text" id="txtOuantity" value="0.00" name="Quantity" class="form-control">
+                    <input type="text" id="txtOuantity" value="" name="Quantity" class="form-control">
                 </div>
             </div>
         </div>
